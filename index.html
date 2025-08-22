@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><!-- MODIFIER: Nom de marque -->Hôtel Villa réal — Votre Marque</title>
+  <meta name="description" content="Hôtel moderne avec chambres confortables, restauration et service de livraison. />
+  <meta name="theme-color" content="#0b5ed7" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b5ed7'/%3E%3Cpath d='M14 42h36v4H14zM18 18h28v18H18z' fill='white'/%3E%3Ccircle cx='24' cy='26' r='3' fill='%230b5ed7'/%3E%3Ccircle cx='40' cy='26' r='3' fill='%230b5ed7'/%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --primary: #0b5ed7;   /* Bleu */
+      --accent: #f59e0b;    /* Orange doux */
+      --bg: #f6f7fb;        /* Gris très clair */
+      --text: #111827;      /* Gris foncé */
+      --muted: #6b7280;     /* Gris moyen */
+      --card: #ffffff;      /* Blanc cartes */
+      --radius: 16px;
+      --shadow: 0 10px 25px rgba(0,0,0,.08);
+      --maxw: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    /* Layout */
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 16px; }
+    section { padding: 64px 0; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,.8);
+      backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .2px; }
+    .brand .logo {
+      width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; color: #fff; background: var(--primary);
+      box-shadow: var(--shadow);
+      font-size: 18px;
+    }
+    nav a { color: var(--text); text-decoration: none; margin: 0 10px; font-weight: 600; }
+    nav a:hover { color: var(--primary); }
+    .cta { display: inline-block; background: var(--primary); color: #fff; padding: 10px 16px; border-radius: 999px; text-decoration: none; font-weight: 700; box-shadow: var(--shadow); }
+    .cta:hover { filter: brightness(.95); }
+
+    /* Hero */
+    .hero { padding: 72px 0 48px; }
+    .hero-card {
+      background: linear-gradient(135deg, #fff, #f7fafc);
+      border-radius: calc(var(--radius) + 4px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; padding: 24px; }
+    .hero h1 { font-size: clamp(28px, 4vw, 44px); margin: 0 0 12px; }
+    .hero p { color: var(--muted); margin: 0 0 20px; }
+    .hero .pill { display: inline-block; background: #eaf2ff; color: var(--primary); font-weight: 700; padding: 8px 12px; border-radius: 999px; margin-bottom: 12px; }
+    .hero img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); }
+
+    /* Cards grid */
+    .grid { display: grid; gap: 20px; }
+    @media (min-width: 720px) { .grid.cols-3 { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 720px) { .grid.cols-2 { grid-template-columns: repeat(2, 1fr); } }
+
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; border: 1px solid #eef2f7; }
+    .card img { width: 100%; height: 180px; object-fit: cover; }
+    .card .pad { padding: 16px; }
+    .tag { display: inline-block; background: #fff3e0; color: #a85900; font-weight: 700; padding: 6px 10px; border-radius: 999px; font-size: 12px; }
+    .price { font-weight: 900; font-size: 20px; color: var(--primary); }
+
+    /* Section headers */
+    .sh { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+    .sh h2 { font-size: clamp(22px, 3vw, 32px); margin: 0; }
+    .sh p { margin: 0; color: var(--muted); }
+
+    /* Steps */
+    .step { display: flex; gap: 12px; align-items: flex-start; }
+    .step .num { width: 32px; height: 32px; border-radius: 8px; background: var(--primary); color: #fff; font-weight: 800; display: grid; place-items: center; box-shadow: var(--shadow); }
+
+    /* Forms (HTML only → mailto) */
+    form { display: grid; gap: 12px; }
+    input, select, textarea { width: 100%; padding: 12px 14px; border: 1px solid #e5e7eb; border-radius: 12px; font: inherit; background: #fff; }
+    textarea { min-height: 120px; }
+    label { font-weight: 700; font-size: 14px; }
+    .hint { font-size: 12px; color: var(--muted); }
+
+    /* FAQ */
+    details { background: #fff; border-radius: var(--radius); border: 1px solid #eef2f7; padding: 14px 16px; box-shadow: var(--shadow); }
+    details + details { margin-top: 10px; }
+    summary { cursor: pointer; font-weight: 800; }
+
+    /* Footer */
+    footer { background: #0f172a; color: #cbd5e1; padding: 32px 0; margin-top: 40px; }
+    footer a { color: #fff; text-decoration: none; }
+
+    /* Utilities */
+    .center { text-align: center; }
+    .muted { color: var(--muted); }
+    .row { display: flex; gap: 12px; }
+    .row > * { flex: 1; }
+
+    /* Responsive hero grid */
+    @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <!-- ============== HEADER ============== -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <link rel="icon" href="images/logo.png" type="image/png">
+         <img src="images/logo.png" alt="Logo Hôtel & Livraison" style="height:60px;">
+        <div>
+          <div style="font-size: 18px; line-height: 1;"> <!-- MODIFIER: Nom -->Hôtel Villa Réal</div>
+          <div class="muted" style="font-size: 12px; line-height: 1;">Confort • Restauration • Livraison</div>
+        </div>
+      </div>
+      <nav aria-label="Navigation principale">
+        <a href="#hotel">Hôtel</a>
+        <a href="#restauration">Restauration</a>
+        <a href="#livraison">Livraison</a>
+        <a href="#reservation">Réserver</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="cta" href="#reservation">Réserver</a>
+    </div>
+  </header>
+
+  <!-- ============== HERO ============== -->
+  <section class="hero">
+    <div class="container hero-card">
+      <div class="hero-grid">
+        <div>
+          <span class="pill">Bienvenue <!-- MODIFIER: Ville --></span>
+          <h1><!-- MODIFIER: Slogan -->Hôtel moderne, service rapide, livraison partout en ville.</h1>
+          <p>Chambres climatisées, Wi‑Fi haut débit, restauration 24/7 et livraison à domicile. 
+            Réservez en un clic via WhatsApp, téléphone ou e‑mail.</p>
+          <div class="row">
+            <!-- MODIFIER: Numéro WhatsApp (sans +, sans espaces) -->
+            <a class="cta" href="https://wa.me/22960000000?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20chambre%20/%20passer%20une%20commande." target="_blank" rel="noopener">WhatsApp</a>
+            <!-- MODIFIER: Téléphone local -->
+            <a class="cta" href="tel:+22946839237" style="background: var(--accent);">Appeler</a>
+          </div>
+          <p class="muted" style="margin-top: 8px;">Réponse rapide 7j/7 • Check‑in 14h • Check‑out 12h</p>
+        </div>
+        <div>
+          <!-- MODIFIER: Remplacez les images dans /images -->
+          <img src="images/hero-hotel.jpg" alt="Hall d'hôtel moderne" />
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== HÔTEL ============== -->
+  <section id="hotel">
+    <div class="container">
+      <div class="sh">
+        <div>
+          <h2>Nos chambres</h2>
+          <p>Confort, propreté et tranquillité — au cœur de la ville.</p>
+        </div>
+        <a class="cta" href="#reservation">Voir disponibilités</a>
+      </div>
+
+      <div class="grid cols-3">
+        <article class="card">
+          <img src="images/chambre-standard.jpg" alt="Chambre Standard" />
+          <div class="pad">
+            <div class="row" style="align-items:center;">
+              <strong>Standard</strong>
+              <span class="tag">Lit double • 2 pers</span>
+            </div>
+            <p class="muted">Climatisation, TV, douche, petit‑déjeuner en option.</p>
+            <div class="row" style="align-items:center;">
+              <span class="price"><!-- MODIFIER: Prix -->25 000 FCFA/nuit</span>
+              <a class="cta" href="#reservation">Réserver</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="images/chambre-superieure.jpg" alt="Chambre Supérieure" />
+          <div class="pad">
+            <div class="row" style="align-items:center;">
+              <strong>Supérieure</strong>
+              <span class="tag">Lit Queen • 2‑3 pers</span>
+            </div>
+            <p class="muted">Espace bureau, minibar, balcon, petit‑déjeuner inclus.</p>
+            <div class="row" style="align-items:center;">
+              <span class="price">35 000 FCFA/nuit</span>
+              <a class="cta" href="#reservation">Réserver</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="images/suite.jpg" alt="Suite" />
+          <div class="pad">
+            <div class="row" style="align-items:center;">
+              <strong>Suite</strong>
+              <span class="tag">Salon • 4 pers</span>
+            </div>
+            <p class="muted">Salon séparé, baignoire, room‑service 24/7, vue ville.</p>
+            <div class="row" style="align-items:center;">
+              <span class="price">65 000 FCFA/nuit</span>
+              <a class="cta" href="#reservation">Réserver</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="grid cols-3" style="margin-top:20px;">
+        <article class="card">
+          <div class="pad">
+            <strong>Équipements</strong>
+            <ul>
+              <li>Wi‑Fi fibre haut débit</li>
+              <li>Climatisation dans toutes les chambres</li>
+              <li>Parking sécurisé</li>
+              <li>Réception 24/7</li>
+            </ul>
+          </div>
+        </article>
+        <article class="card">
+          <div class="pad">
+            <strong>Services</strong>
+            <ul>
+              <li>Navette aéroport</li>
+              <li>Blanchisserie</li>
+              <li>Room‑service</li>
+              <li>Conciergerie</li>
+            </ul>
+          </div>
+        </article>
+        <article class="card">
+          <div class="pad">
+            <strong>Horaires</strong>
+            <ul>
+              <li>Check‑in : 14h</li>
+              <li>Check‑out : 12h</li>
+              <li>Petit‑déjeuner : 6h‑10h</li>
+              <li>Restauration : 24/7</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== RESTAURATION ============== -->
+  <section id="restauration">
+    <div class="container">
+      <div class="sh">
+        <div>
+          <h2>Restauration & Room‑Service</h2>
+          <p>Plats africains & internationaux — servis sur place ou livrés.</p>
+        </div>
+        <a class="cta" href="#livraison">Commander</a>
+      </div>
+
+      <div class="grid cols-3">
+        <article class="card">
+          <img src="images/plat1.jpg" alt="Poulet braisé" />
+          <div class="pad">
+            <strong>Poulet braisé</strong>
+            <p class="muted">Attiéké / Frites — 4 500 FCFA</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="images/plat2.jpg" alt="Poisson grillé" />
+          <div class="pad">
+            <strong>Poisson grillé</strong>
+            <p class="muted">Alloco / Riz — 5 500 FCFA</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="images/plat3.jpg" alt="Burger maison" />
+          <div class="pad">
+            <strong>Burger maison</strong>
+            <p class="muted">Fromage • Frites — 4 000 FCFA</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== LIVRAISON ============== -->
+  <section id="livraison">
+    <div class="container">
+      <div class="sh">
+        <div>
+          <h2>Livraison rapide</h2>
+          <p>Commandez par WhatsApp, téléphone ou formulaire — nous livrons en moins d’1h*.</p>
+        </div>
+        <a class="cta" href="https://wa.me/22960000000?text=Bonjour%2C%20je%20souhaite%20passer%20une%20commande." target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="card">
+          <div class="pad">
+            <strong>Comment ça marche</strong>
+            <div class="step"><div class="num">1</div><div>Envoyez votre commande <strong>par WhatsApp</strong> ou appelez‑nous.</div></div>
+            <div class="step"><div class="num">2</div><div>Nous confirmons le <strong>montant</strong> et le <strong>délai</strong>.</div></div>
+            <div class="step"><div class="num">3</div><div>Nous préparons et <strong>livrons</strong> à votre adresse.</div></div>
+            <p class="hint">*Délais variables selon la zone et l’heure.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="pad">
+            <strong>Zones & frais</strong>
+            <ul>
+              <li><!-- MODIFIER: Zones -->Centre‑ville : 500 FCFA</li>
+              <li>Akpakpa : 1 000 FCFA</li>
+              <li>Calavi : 1 500 FCFA</li>
+              <li>Autres : sur devis</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== RÉSERVATION / COMMANDE ============== -->
+  <section id="reservation">
+    <div class="container">
+      <div class="sh">
+        <div>
+          <h2>Réserver ou commander</h2>
+          <p>HTML pur : les formulaires ouvrent votre e‑mail. Pour une soumission automatique, utilisez WhatsApp ou appelez‑nous.</p>
+        </div>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="card">
+          <div class="pad">
+            <strong>Réservation d’hôtel</strong>
+            <!-- MODIFIER: votre e‑mail -->
+            <form action="mailto:contact@votrehotel.com" method="post" enctype="text/plain">
+              <div class="row">
+                <label>Arrivée
+                  <input type="date" name="Arrivée" required />
+                </label>
+                <label>Départ
+                  <input type="date" name="Départ" required />
+                </label>
+              </div>
+              <div class="row">
+                <label>Type de chambre
+                  <select name="Chambre" required>
+                    <option>Standard</option>
+                    <option>Supérieure</option>
+                    <option>Suite</option>
+                  </select>
+                </label>
+                <label>Personnes
+                  <select name="Personnes" required>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                  </select>
+                </label>
+              </div>
+              <div class="row">
+                <label>Nom complet
+                  <input type="text" name="Nom" placeholder="Ex. Jean K." required />
+                </label>
+                <label>Téléphone
+                  <!-- MODIFIER: indicatif → +229 -->
+                  <input type="tel" name="Téléphone" placeholder="+229 60 00 00 00" required />
+                </label>
+              </div>
+              <label>E‑mail
+                <input type="email" name="Email" placeholder="vous@example.com" required />
+              </label>
+              <label>Message
+                <textarea name="Message" placeholder="Heure d’arrivée, demandes spéciales…"></textarea>
+              </label>
+              <button class="cta" type="submit">Envoyer par e‑mail</button>
+              <a class="cta" style="background: var(--accent);" target="_blank" rel="noopener" href="https://wa.me/22960000000?text=Bonjour%2C%20je%20veux%20r%C3%A9server%20%3A%20%0A-Chambre%3A%20Standard%0A-Arriv%C3%A9e%3A%20%0A-D%C3%A9part%3A%20%0A-Nom%3A%20%0A-T%C3%A9l%3A%20">Réserver via WhatsApp</a>
+              
+            </form>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="pad">
+            <strong>Commande (livraison)</strong>
+            <!-- MODIFIER: votre e‑mail -->
+            <form action="mailto:contact@votrehotel.com" method="post" enctype="text/plain">
+              <div class="row">
+                <label>Nom complet
+                  <input type="text" name="Nom" required />
+                </label>
+                <label>Téléphone
+                  <input type="tel" name="Téléphone" required />
+                </label>
+              </div>
+              <label>Adresse de livraison
+                <input type="text" name="Adresse" placeholder="Quartier, rue, repère…" required />
+              </label>
+              <label>Détails de la commande
+                <textarea name="Commande" placeholder="Ex. 1x Poulet braisé, 2x Frites…" required></textarea>
+              </label>
+              <button class="cta" type="submit">Envoyer par e‑mail</button>
+              <a class="cta" style="background: var(--accent);" target="_blank" rel="noopener" href="https://wa.me/22960000000?text=Bonjour%2C%20je%20veux%20une%20livraison%20%3A%20%0A-Commande%3A%20%0A-Adresse%3A%20%0A-T%C3%A9l%3A%20">Commander via WhatsApp</a>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      
+    </div>
+  </section>
+
+  <!-- ============== AVIS ============== -->
+  <section>
+    <div class="container">
+      <div class="sh">
+        <div>
+          <h2>Ils nous font confiance</h2>
+          <p>Quelques retours de nos clients.</p>
+        </div>
+      </div>
+      <div class="grid cols-3">
+        <figure class="card"><div class="pad"><blockquote>Chambre impeccable et service discret. Petit‑déj savoureux. 👍</blockquote><figcaption class="muted">— A. Mensah</figcaption></div></figure>
+        <figure class="card"><div class="pad"><blockquote>Livraison rapide, plats bien chauds. Je recommande !</blockquote><figcaption class="muted">— R. Toko</figcaption></div></figure>
+        <figure class="card"><div class="pad"><blockquote>Wi‑Fi très rapide pour bosser. J’ai prolongé mon séjour.</blockquote><figcaption class="muted">— S. Houngbédji</figcaption></div></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FAQ ============== -->
+  <section>
+    <div class="container">
+      <div class="sh"><h2>FAQ</h2></div>
+      <details><summary>Puis‑je payer par Mobile Money ?</summary><p>Oui, nous acceptons Moov/MTN MoMo et espèces. Demandez le numéro au moment de la réservation.</p></details>
+      <details><summary>Le petit‑déjeuner est‑il inclus ?</summary><p>Inclus pour les chambres Supérieure et Suite. En option pour la Standard.</p></details>
+      <details><summary>Faites‑vous des réductions longue durée ?</summary><p>Oui, à partir de 7 nuits. Contactez‑nous pour un devis.</p></details>
+    </div>
+  </section>
+
+  <!-- ============== CONTACT ============== -->
+  <section id="contact">
+    <div class="container">
+      <div class="sh">
+        <div>
+          <h2>Nous contacter</h2>
+          <p>Adresse, horaires et coordonnées.</p>
+        </div>
+        <a class="cta" href="tel:+22960000000">Appeler maintenant</a>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="card">
+          <div class="pad">
+            <strong><!-- MODIFIER: Nom de l’hôtel -->Villa Réal</strong>
+            <p>
+              <!-- MODIFIER: Adresse complète -->
+              Cotonou, Bénin
+            </p>
+            <p>
+              Tél : <a href="tel:+22960000000">+22946839237</a><br />
+              WhatsApp : <a href="https://wa.me/22960000000" target="_blank" rel="noopener">+22946839237</a><br />
+              E‑mail : <a href="mailto:contact@Villaréeal.com">contact@villaréal.com</a>
+            </p>
+            <p class="muted">Ouvert 24/7</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="pad">
+
+            <!-- Google Maps -->
+    <div style="width:100%; height:400px; margin-top:20px;">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253770.76360597246!2d2.2313647687047626!3d6.3722764531510325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x102354e509f894f7%3A0xc8fde921f89849f6!2sCotonou!5e0!3m2!1sfr!2sbj!4v1755856924410!5m2!1sfr!2sbj" 
+        width="100%" 
+        height="100%" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+  <!-- ============== FOOTER ============== -->
+  <footer>
+    <div class="container">
+      <div class="row" style="align-items:center;">
+        <div>© <span id="year">2025</span> <!-- MODIFIER: Marque -->Votre Marque — Tous droits réservés.</div>
+        <div class="row" style="justify-content:flex-end; gap:16px;">
+          <a href="#">Facebook</a>
+          <a href="#">Instagram</a>
+          <a href="#">TikTok</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Pas de JavaScript — site 100% HTML/CSS -->
+</body>
+</html>
