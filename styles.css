@@ -1,21 +1,20 @@
-.contact-map {
+.contact-card h2 {
+  font-size: 40px;   /* Titre plus grand (avant 40px) */
+  margin-bottom: 20px;
+  color: #222;
+  text-align: center;
+  font-weight: bold;
+}
+
+.contact-list li {
+  font-size: 18px;   /* Texte plus grand (avant 15px) */
+  color: #444;
+  margin: 12px 0;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-  flex-wrap: wrap; /* Pour que ça passe bien sur mobile */
+  align-items: center;
 }
 
-.contact-info {
-  flex: 1;
-  min-width: 250px;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.map {
-  flex: 1;
-  min-width: 300px;
+.contact-list li i {
+  font-size: 20px;   /* Icônes un peu plus grandes */
+  margin-right: 12px;
 }
