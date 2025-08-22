@@ -1,20 +1,105 @@
-.contact-card h2 {
-  font-size: 40px;   /* Titre plus grand (avant 40px) */
-  margin-bottom: 20px;
-  color: #222;
-  text-align: center;
-  font-weight: bold;
+:root{
+  --accent: #1e90ff;
+  --btn-bg: #0a84ff;
+  --gap: 12px;
 }
 
-.contact-list li {
-  font-size: 18px;   /* Texte plus grand (avant 15px) */
-  color: #444;
-  margin: 12px 0;
-  display: flex;
-  align-items: center;
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui, Arial, sans-serif;
+  background:#f5f5f7;
 }
 
-.contact-list li i {
-  font-size: 20px;   /* Icônes un peu plus grandes */
-  margin-right: 12px;
+/* Header */
+.site-header{
+  display:flex;
+  align-items:center;
+  gap:var(--gap);
+  padding:12px;
+  background:#fff;
+  position:sticky;
+  top:0;
+  z-index:10;
+  box-shadow:0 1px 4px rgba(0,0,0,0.06);
+  flex-wrap:wrap; /* important: permet d'aller sur plusieurs lignes si besoin */
+}
+
+/* logo / brand */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width:0;
+}
+.brand-img{width:48px; height:48px; object-fit:cover; border-radius:6px;}
+.brand-name{font-weight:700; font-size:16px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+
+/* nav */
+.main-nav{
+  flex:1 1 auto;
+  min-width:0;
+}
+.nav-list{
+  display:flex;
+  gap:12px;
+  list-style:none;
+  margin:0;
+  padding:0;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.nav-list a{
+  text-decoration:none;
+  color:#222;
+  padding:6px 6px;
+  white-space:nowrap;
+  font-weight:600;
+}
+
+/* bouton réserver */
+.btn-reserve{
+  background:var(--btn-bg);
+  color:#fff;
+  padding:10px 14px;
+  border-radius:22px;
+  text-decoration:none;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+/* hamburger (mobile) hidden par défaut sur desktop */
+.hamburger{
+  display:none;
+  background:none;
+  border:0;
+  font-size:22px;
+  padding:8px;
+}
+
+/* --- MEDIA QUERIES --- */
+@media (max-width:800px){
+  .nav-list{display:none} /* on cache nav horizontale sur petit */
+  .hamburger{display:block}
+  .btn-reserve{order:3} /* s'assurer du placement */
+  .brand{order:1}
+  .hamburger{order:2}
+}
+
+/* quand menu ouvert */
+.main-nav.open .nav-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  padding:10px 0;
+  width:100%;
+}
+
+/* ajustements pour très petit écran */
+@media (max-width:420px){
+  .brand-img{width:40px;height:40px}
+  .brand-name{font-size:14px}
+  .btn-reserve{padding:8px 12px; font-size:14px}
+  .site-header{padding:8px}
 }
