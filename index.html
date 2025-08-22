@@ -6,7 +6,9 @@
   <title>Hôtel Villa réal </title>
   <meta name="description" content="Hôtel moderne avec chambres confortables, restauration et service de livraison. />
   <meta name="theme-color" content="#0b5ed7" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b5ed7'/%3E%3Cpath d='M14 42h36v4H14zM18 18h28v18H18z' fill='white'/%3E%3Ccircle cx='24' cy='26' r='3' fill='%230b5ed7'/%3E%3Ccircle cx='40' cy='26' r='3' fill='%230b5ed7'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
       --primary: #0b5ed7;   /* Bleu */
@@ -449,8 +451,7 @@
       <details><summary>Faites‑vous des réductions longue durée ?</summary><p>Oui, à partir de 7 nuits. Contactez‑nous pour un devis.</p></details>
     </div>
   </section>
-
-  <!-- ============== CONTACT ============== -->
+   <!-- ============== CONTACT ============== -->
   <section id="contact">
     <div class="container">
       <div class="sh">
@@ -467,19 +468,32 @@
             <strong><!-- MODIFIER: Nom de l’hôtel -->Villa Réal</strong>
             <p>
               <!-- MODIFIER: Adresse complète -->
-              Cotonou, Bénin
-            </p>
-            <p>
-              Tél : <a href="tel:+22960000000">+22946839237</a><br />
-              WhatsApp : <a href="https://wa.me/22960000000" target="_blank" rel="noopener">+22946839237</a><br />
-              E‑mail : <a href="mailto:contact@Villaréeal.com">contact@villaréal.com</a>
-            </p>
-            <p class="muted">Ouvert 24/7</p>
+              <ul class="contact-list">
+    <li><i class="fas fa-map-marker-alt"></i> Cotonou, Bénin</li>
+    <li><i class="fas fa-phone"></i> <a href="tel:+22946839237">+229 46 83 92 37</a></li>
+    <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/22946839237">+229 46 83 92 37</a></li>
+    <li><i class="fas fa-envelope"></i> <a href="mailto:contact@villaréal.com">contact@villaréal.com</a></li>
+    <li><i class="fas fa-clock"></i> Ouvert 24/7</li>
+  </ul>
           </div>
         </div>
         <div class="card">
           <div class="pad">
 
+            <!-- Google Maps -->
+    <div style="width:100%; height:400px; margin-top:20px;">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253770.76360597246!2d2.2313647687047626!3d6.3722764531510325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x102354e509f894f7%3A0xc8fde921f89849f6!2sCotonou!5e0!3m2!1sfr!2sbj!4v1755856924410!5m2!1sfr!2sbj" 
+        width="100%" 
+        height="100%" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
             <!-- Google Maps -->
     <div style="width:100%; height:400px; margin-top:20px;">
       <iframe 
@@ -512,6 +526,7 @@
   <!-- Pas de JavaScript — site 100% HTML/CSS -->
 </body>
 </html>
+
 
 
 
